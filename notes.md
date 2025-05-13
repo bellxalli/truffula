@@ -12,7 +12,7 @@ The consoleColor.java is an enum which holds unchangable values that can be used
 ## ColorPrinter.java / ColorPrinterTest.java
 
 ## TruffulaOptions.java / TruffulaOptionsTest.java
-
+In truffulaOptions.java you will be created a method that creates a truffulaOptions object by taking in an array of strings holding the given data for the fields to be set to in the truffulaOptions class. These fields are private and final meaning they cannot be changed or accessed outside of the class. This file also holds various other methods that will be used to access the private fields outside of the class. The test file holds one test that can and will be used as an example for the new tests to be written.
 ## TruffulaPrinter.java / TruffulaPrinterTest.java
 
 ## AlphabeticalFileSorter.java
