@@ -11,6 +11,8 @@ In the App.java, you will be able to choose from a variety of different options,
 
 ## ColorPrinter.java / ColorPrinterTest.java
 
+In ColorPrinter.java, you implement a method that will result in your terminal output being the color you specify. It is a utility class that uses the ConsoleColor enum, which is then tested by ColorPrinterTest.java. The test file will have tests that will need to be implemented, but there is a test within the file already that can be used as an example. 
+
 ## TruffulaOptions.java / TruffulaOptionsTest.java
 
 ## TruffulaPrinter.java / TruffulaPrinterTest.java
