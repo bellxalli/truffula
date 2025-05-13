@@ -5,6 +5,8 @@ PLEASE MAKE FREQUENT COMMITS AS YOU FILL OUT THIS FILE.
 
 ## App.java
 
+In the App.java, you will be able to choose from a variety of different options, such as whether to show hidden files, whether you will use your colored output that you will make in ColorPrinter (in wave 1), and it will help you choose the root directory that will be the starting point for the tree you will print.
+
 ## ConsoleColor.java
 
 ## ColorPrinter.java / ColorPrinterTest.java
