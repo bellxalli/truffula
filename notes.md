@@ -16,7 +16,7 @@ In ColorPrinter.java, you implement a method that will result in your terminal o
 In truffulaOptions.java you will be created a method that creates a truffulaOptions object by taking in an array of strings holding the given data for the fields to be set to in the truffulaOptions class. These fields are private and final meaning they cannot be changed or accessed outside of the class. This file also holds various other methods that will be used to access the private fields outside of the class. The test file holds one test that can and will be used as an example for the new tests to be written.
 
 ## TruffulaPrinter.java / TruffulaPrinterTest.java
-
+TruffulaPrinter.java prints out a directory using a tree structure, and using your colored output that is written in an earlier wave. It sorts through the directory in a case-sensitive manner and using a variety of different colors so that each file is easy to pick out from the rest in the output. You will implement a method called PrintTree that uses code from multiple different waves, and is very advanced. TruffulaPrinterTest.java has 3 example tests, but we will add more to test different parts of the TruffulaPrinter.java, including the PrintTree method that we will implement.
 
 ## AlphabeticalFileSorter.java
 This file is a utility class sorts an array of file names (not case sensitive) alphabetically. The one and only method is implemented using a lambda function which is something we have seen and heard of before but is not completely familiar to us. This function returns the sorted array of file names.
