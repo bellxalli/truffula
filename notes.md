@@ -6,7 +6,7 @@ PLEASE MAKE FREQUENT COMMITS AS YOU FILL OUT THIS FILE.
 ## App.java
 
 ## ConsoleColor.java
-
+The consoleColor.java is an enum which holds unchangable values that can be used in other methods and functions throughout the program. This emun holds colors as variables and methods that will be used in colorPrinter.java
 ## ColorPrinter.java / ColorPrinterTest.java
 
 ## TruffulaOptions.java / TruffulaOptionsTest.java
