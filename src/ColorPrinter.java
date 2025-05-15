@@ -95,6 +95,7 @@ public class ColorPrinter {
     {
       printStream.print(currentColor + message);
     }
+    
   }//end print
 
   /**
