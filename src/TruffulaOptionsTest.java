@@ -39,7 +39,7 @@ public class TruffulaOptionsTest {
     TruffulaOptions options = new TruffulaOptions(args);
 
     // Assert: Check that the root directory is set correctly
-    assertTrue(options.isUseColor());
+    assertFalse(options.isUseColor());
   }
 
 @Test
