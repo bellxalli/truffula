@@ -38,7 +38,7 @@ public class TruffulaOptionsTest {
     // Act: Create TruffulaOptions instance
     TruffulaOptions options = new TruffulaOptions(args);
 
-    // Assert: Check that the root directory is set correctly
+    // Assert: Check that color is being used
     assertTrue(options.isUseColor());
   }
 
@@ -53,7 +53,7 @@ public class TruffulaOptionsTest {
     // Act: Create TruffulaOptions instance
     TruffulaOptions options = new TruffulaOptions(args);
 
-    // Assert: Check that the root directory is set correctly
+    // Assert: Check that hidden files are being shown
     assertTrue(options.isShowHidden());
   }
 
