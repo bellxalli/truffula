@@ -27,6 +27,26 @@ class ColorPrinterTest {
     assertEquals(expectedOutput, outputStream.toString());
   }
 
+@Test
+  void testPrintlnWithRedColorAndNoReset() {
+    // Arrange: Capture the printed output
+    ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+    PrintStream printStream = new PrintStream(outputStream);
+
+    ColorPrinter printer = new ColorPrinter(printStream);
+    printer.setCurrentColor(ConsoleColor.RED);
+
+    // Act: Print the message
+    String message = "I speak for the trees";
+    printer.println(message, false);
+
+
+    String expectedOutput = ConsoleColor.RED + "I speak for the trees" + System.lineSeparator();
+
+    // Assert: Verify the printed output
+    assertEquals(expectedOutput, outputStream.toString());
+  }
+
   @Test
   void testPrintWithRedColorAndNoReset() {
     // Arrange: Capture the printed output
@@ -61,7 +81,7 @@ class ColorPrinterTest {
     printer.print(message);
 
 
-    String expectedOutput = ConsoleColor.RED + "I speak for the trees" + System.lineSeparator() + ConsoleColor.RESET;
+    String expectedOutput = ConsoleColor.RED + "I speak for the trees" + ConsoleColor.RESET;
 
     // Assert: Verify the printed output
     assertEquals(expectedOutput, outputStream.toString());
