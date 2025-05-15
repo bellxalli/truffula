@@ -89,12 +89,10 @@ public class ColorPrinter {
     // TODO: Implement this!
 
   if (reset == true) {
-    System.out.print(currentColor + message + ConsoleColor.RESET);
+    printStream.print(getCurrentColor());
     setCurrentColor(ConsoleColor.RESET);
   } else {
     printStream.print(currentColor + message);
-    printStream.print(message);
-
   }
 
   }//end print
