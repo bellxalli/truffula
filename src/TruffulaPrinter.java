@@ -1,4 +1,7 @@
+import java.io.File;
 import java.io.PrintStream;
+import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -6,6 +9,29 @@ import java.util.List;
  * with optional colored output. It supports sorting files and directories
  * in a case-insensitive manner and cycling through colors for visual clarity.
  */
+
+class Node<T> {
+    T data;
+
+    public Node(T data) {
+        this.data = data;
+    }
+}
+
+class Tree<T> {
+Node<T> root;
+
+    File[] files = File;
+
+    public Tree(T rootData) {
+        this.root = new Node<>(rootData);
+        this.children = new LinkedList<>();
+    }
+
+    LinkedList<Node<T>> children;
+   
+  }
+
 public class TruffulaPrinter {
   
   /**
@@ -112,7 +138,39 @@ public class TruffulaPrinter {
     // DO NOT USE SYSTEM.OUT.PRINTLN
     // USE out.println instead (will use your ColorPrinter)
 
+      
+    Tree<String> directoryTree = new Tree<>();
+
+
     out.println("printTree was called!");
     out.println("My options are: " + options);
-  }
+  }//end print tree
+
+  private void printTreeHelper(Tree<String> node, int level){
+
+    File[] files = File.listFiles();
+
+    if(node !=null){
+
+    ColorPrinter.out.println("");
+
+
+    }//end if
+
+  for (Node<String> child : node.children){
+    printTreeHelper(child, level+1); //make a variable for level
+  }//end for
+
+  }//end helper
+
+public static void main (String[] args){
+
+  Tree<String> fileTree = new Tree<>("root");
+
+
+
+
 }
+
+
+}//end file
