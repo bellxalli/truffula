@@ -103,15 +103,17 @@ public class TruffulaOptions  {
   public TruffulaOptions(String[] args) throws IllegalArgumentException, FileNotFoundException {
 
     //array not correct size
-    if(args.length != 3 || args.length != 1)
+    if(args.length != 3 && args.length != 1)
     {
       throw new IllegalArgumentException("illegal arguments");
     }
+
     if(args.length == 1)
     {
       root = new File(args[0]);
+      showHidden = false;
+      useColor = false;
     }
-
     else
     {
       //showHidden
@@ -123,7 +125,7 @@ public class TruffulaOptions  {
       
       //no color
       if(args[1] == "-nc" || args[0] == "-nc")
-        useColor = true;
+        useColor = false;
       
       else
         throw new IllegalArgumentException("illegal arguments");
@@ -136,7 +138,6 @@ public class TruffulaOptions  {
       else
         throw new FileNotFoundException("file not found");      
     }
-    
 
   }
 
