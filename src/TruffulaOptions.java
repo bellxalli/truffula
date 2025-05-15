@@ -114,8 +114,6 @@ public class TruffulaOptions  {
       root = new File(args[0]);
       showHidden = false;
       useColor = true;
-      showHidden = false;
-      useColor = false;
     }
     else
     {
