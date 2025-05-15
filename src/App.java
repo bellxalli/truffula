@@ -1,3 +1,5 @@
+import java.io.File;
+
 public class App {
   
   /**
@@ -45,5 +47,35 @@ public class App {
     // You should create a TruffulaOptions object using the args and
     // pass it to a new TruffulaPrinter that uses System.out
     // Then, call printTree on the TruffulaPrinter
+
+
+  //file directory and connention
+    File directory = new File("path/to/directory", "subfolder");
+    directory.mkdir();
+    String directoryPath = directory.getAbsolutePath();
+
+
+  //truffula obj with all params
+    String[] truffStrings = {"-nc", "-h", directoryPath};
+
+    TruffulaOptions options = new TruffulaOptions(truffStrings);
+    TruffulaPrinter tPrinter = new TruffulaPrinter(options);
+    tPrinter.printTree();
+
+
+  //truffula obj with all params but swapped
+    String[] truffStringsSwapped = {"-h", "-nc", directoryPath};
+
+    TruffulaOptions optionsSwapped = new TruffulaOptions(truffStringsSwapped);
+    TruffulaPrinter tPrinterSwapped = new TruffulaPrinter(optionsSwapped);
+    tPrinterSwapped.printTree();
+
+
+  //truffula obj with one param
+    String[] truffStringsOneParam = {directoryPath};
+
+    TruffulaOptions optionsOneParam = new TruffulaOptions(truffStringsOneParam);
+    TruffulaPrinter tPrinterOneParam = new TruffulaPrinter(optionsOneParam);
+    tPrinterOneParam.printTree();
   }
 }
