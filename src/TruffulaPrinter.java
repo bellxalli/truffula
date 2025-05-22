@@ -151,23 +151,23 @@ public class TruffulaPrinter {
 
   private void printTreeHelper(File file, int level){
 
-    if(file.isHidden()) return;
+  if(file.isHidden()) return;
 
-    File[] files = file.listFiles();
+  File[] files = file.listFiles();
 
   if (file.isDirectory()) {
 
-        File[] children = file.listFiles();
+    File[] children = file.listFiles();
 
-        if (children != null) {
+    if (children != null) {
 
-            for (File child : children) {
+        for (File child : children) {
 
-                printTreeHelper(child, level + 1);
+          printTreeHelper(child, level + 1);
 
-            }
         }
     }
+  }
 
   }//end helper
 
