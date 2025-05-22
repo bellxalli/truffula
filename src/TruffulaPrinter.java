@@ -138,28 +138,36 @@ public class TruffulaPrinter {
     // DO NOT USE SYSTEM.OUT.PRINTLN
     // USE out.println instead (will use your ColorPrinter)
 
-      
-    Tree<String> directoryTree = new Tree<>();
+    // Tree<String> directoryTree = new Tree<>();
 
 
     out.println("printTree was called!");
     out.println("My options are: " + options);
+
+     if (root ==null) return;
+
+    printTreeHelper(root, 0);
   }//end print tree
 
-  private void printTreeHelper(Tree<String> node, int level){
+  private void printTreeHelper(File file, int level){
 
-    File[] files = File.listFiles();
+    if(file.isHidden()) return;
 
-    if(node !=null){
+    File[] files = file.listFiles();
 
-    ColorPrinter.out.println("");
+  if (file.isDirectory()) {
 
+        File[] children = file.listFiles();
 
-    }//end if
+        if (children != null) {
 
-  for (Node<String> child : node.children){
-    printTreeHelper(child, level+1); //make a variable for level
-  }//end for
+            for (File child : children) {
+
+                printTreeHelper(child, level + 1);
+
+            }
+        }
+    }
 
   }//end helper
 
