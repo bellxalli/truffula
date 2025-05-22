@@ -1,7 +1,5 @@
 import java.io.File;
 import java.io.PrintStream;
-import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -10,27 +8,6 @@ import java.util.List;
  * in a case-insensitive manner and cycling through colors for visual clarity.
  */
 
-class Node<T> {
-    T data;
-
-    public Node(T data) {
-        this.data = data;
-    }
-}
-
-class Tree<T> {
-Node<T> root;
-
-    File[] files = File;
-
-    public Tree(T rootData) {
-        this.root = new Node<>(rootData);
-        this.children = new LinkedList<>();
-    }
-
-    LinkedList<Node<T>> children;
-   
-  }
 
 public class TruffulaPrinter {
   
@@ -138,11 +115,10 @@ public class TruffulaPrinter {
     // DO NOT USE SYSTEM.OUT.PRINTLN
     // USE out.println instead (will use your ColorPrinter)
 
-    // Tree<String> directoryTree = new Tree<>();
+    // out.println("printTree was called!");
+    out.println(options +"\n");
 
-
-    out.println("printTree was called!");
-    out.println("My options are: " + options);
+     File root = options.getRoot();
 
      if (root ==null) return;
 
@@ -151,29 +127,30 @@ public class TruffulaPrinter {
 
   private void printTreeHelper(File file, int level){
 
-  if(file.isHidden()) return;
-
-  File[] files = file.listFiles();
+    // File[] files = file.listFiles();
 
   if (file.isDirectory()) {
 
     File[] children = file.listFiles();
 
-    if (children != null) {
+      if (children != null) {
 
         for (File child : children) {
 
-          printTreeHelper(child, level + 1);
+            printTreeHelper(child, level + 1);
 
-        }
-    }
-  }
+            }//end for
+        }//end is not null
+    }//end if isDirectory
 
   }//end helper
 
+
+  //use getRoot from truffulaOptions
+
 public static void main (String[] args){
 
-  Tree<String> fileTree = new Tree<>("root");
+  // Tree<String> fileTree = new Tree<>("root");
 
 
 
