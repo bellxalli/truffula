@@ -115,47 +115,64 @@ public class TruffulaPrinter {
     // DO NOT USE SYSTEM.OUT.PRINTLN
     // USE out.println instead (will use your ColorPrinter)
 
-    // out.println("printTree was called!");
-    out.println(options +"\n");
+  
 
      File root = options.getRoot();
 
      if (root ==null) return;
 
     printTreeHelper(root, 0);
-  }//end print tree
+}//end print tree
 
-  private void printTreeHelper(File file, int level){
+  private void printTreeHelper(File file, int level) {
 
-    // File[] files = file.listFiles();
+    if (!options.isShowHidden() && file.isHidden()) {
+        return;
+    }//doesn't show hidden files
 
-  if (file.isDirectory()) {
+    String indent = "";
+    for (int i = 0; i < level; i++) {
 
-    File[] children = file.listFiles();
+        indent += "   ";
 
-      if (children != null) {
+    }//end for
 
-        for (File child : children) {
+    String directorySlash = file.getName();
+    if (file.isDirectory()) {
+      
+        directorySlash += "/";
 
-            printTreeHelper(child, level + 1);
+    }//end if
+
+if (options.isUseColor()) {
+    out.setCurrentColor(ConsoleColor.WHITE);
+    out.println(indent + directorySlash);
+    out.setCurrentColor(ConsoleColor.RESET);
+} else {
+    out.println(indent + directorySlash);
+}
+
+
+    if (file.isDirectory()) {
+
+      File[] children = file.listFiles();
+
+        if (children != null) {
+
+            for (File child : children) {
+
+              printTreeHelper(child, level + 1);
 
             }//end for
-        }//end is not null
-    }//end if isDirectory
-
-  }//end helper
-
-
-  //use getRoot from truffulaOptions
+        }//end if
+    }//end isDirectory
+}//end printTreeHelper
+  
 
 public static void main (String[] args){
 
-  // Tree<String> fileTree = new Tree<>("root");
 
-
-
-
-}
+}//end main
 
 
 }//end file
