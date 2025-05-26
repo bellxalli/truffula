@@ -138,6 +138,7 @@ public class TruffulaPrinter {
         for (File child : children) {
 
             printTreeHelper(child, level + 1);
+            out.println(child +"\n");
 
             }//end for
         }//end is not null
