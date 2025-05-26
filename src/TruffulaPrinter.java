@@ -117,62 +117,62 @@ public class TruffulaPrinter {
 
   
 
-     File root = options.getRoot();
+    File root = options.getRoot();
 
-     if (root ==null) return;
+    if (root ==null) return;
 
     printTreeHelper(root, 0);
-}//end print tree
+  }//end print tree
 
   private void printTreeHelper(File file, int level) {
 
     if (!options.isShowHidden() && file.isHidden()) {
-        return;
+      return;
     }//doesn't show hidden files
 
     String indent = "";
     for (int i = 0; i < level; i++) {
 
-        indent += "   ";
+      indent += "   ";
 
     }//end for
 
     String directorySlash = file.getName();
     if (file.isDirectory()) {
       
-        directorySlash += "/";
+      directorySlash += "/";
 
     }//end if
 
-if (options.isUseColor()) {
-    out.setCurrentColor(ConsoleColor.WHITE);
-    out.println(indent + directorySlash);
-    out.setCurrentColor(ConsoleColor.RESET);
-} else {
-    out.println(indent + directorySlash);
-}
+    if (options.isUseColor()) {
+      out.setCurrentColor(ConsoleColor.WHITE);
+      out.println(indent + directorySlash);
+      out.setCurrentColor(ConsoleColor.RESET);
+    } else {
+      out.println(indent + directorySlash);
+    }
 
 
     if (file.isDirectory()) {
 
       File[] children = file.listFiles();
 
-        if (children != null) {
+      if (children != null) {
 
-            for (File child : children) {
+        for (File child : children) {
 
-              printTreeHelper(child, level + 1);
+          printTreeHelper(child, level + 1);
 
-            }//end for
-        }//end if
+        }//end for
+      }//end if
     }//end isDirectory
-}//end printTreeHelper
+  }//end printTreeHelper
   
 
-public static void main (String[] args){
+  public static void main (String[] args){
 
 
-}//end main
+  }//end main
 
 
 }//end file
