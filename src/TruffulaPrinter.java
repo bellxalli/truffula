@@ -1,5 +1,7 @@
+import static AlphabeticalFileSorter.sort;
 import java.io.File;
 import java.io.PrintStream;
+import static java.util.Arrays.sort;
 import java.util.List;
 
 /**
@@ -168,7 +170,9 @@ public class TruffulaPrinter {
 
       if (children != null) {
 
-        for (File child : children) {
+        File[] sortedChildren = sort(children);
+
+        for (File child : sortedChildren) {
           if(color == 2)
           {
             color = 0;
@@ -179,6 +183,8 @@ public class TruffulaPrinter {
 
         }//end for
       }//end if
+
+
     }//end isDirectory
   }//end printTreeHelper
   
