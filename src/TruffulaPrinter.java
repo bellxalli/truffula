@@ -145,31 +145,21 @@ public class TruffulaPrinter {
     }//end if
 
     //colors changed based on level using color var
-    // if(color == 0)
-    // {
-    //   out.setCurrentColor(ConsoleColor.WHITE);
-    //   out.println(indent + directorySlash);
-    // }
-    // if(color == 1)
-    // {
-    //   out.setCurrentColor(ConsoleColor.PURPLE);
-    //   out.println(indent + directorySlash);
-    // }
-    // if(color == 2)
-    // {
-    //   out.setCurrentColor(ConsoleColor.YELLOW);
-    //   out.println(indent + directorySlash);
-    // }
-
-
-    if (options.isUseColor()) {
+    if(color == 0)
+    {
       out.setCurrentColor(ConsoleColor.WHITE);
       out.println(indent + directorySlash);
-      out.setCurrentColor(ConsoleColor.RESET);
-    } else {
+    }
+    if(color == 1)
+    {
+      out.setCurrentColor(ConsoleColor.PURPLE);
       out.println(indent + directorySlash);
     }
-
+    if(color == 2)
+    {
+      out.setCurrentColor(ConsoleColor.YELLOW);
+      out.println(indent + directorySlash);
+    }
 
     if (file.isDirectory()) {
       File[] children = file.listFiles();
@@ -178,9 +168,12 @@ public class TruffulaPrinter {
 
         for (File child : children) {
           if(color == 2)
+          {
             color = 0;
-
-          printTreeHelper(child, level + 1, color +1);
+            printTreeHelper(child, level + 1, color);
+          }
+          else
+            printTreeHelper(child, level + 1, color +1);
 
         }//end for
       }//end if

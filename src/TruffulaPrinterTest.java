@@ -244,5 +244,58 @@ public class TruffulaPrinterTest {
         assertEquals(expected.toString(), baos.toString());
     }//end withHiddenFiles
 
+    @Test
+    public void testPrintTreeWithColors(@TempDir File tempDir) throws IOException {
+        // Create root folder
+        File root = new File(tempDir, "rootFolder");
+        assertTrue(root.mkdir(), "rootFolder should be created");
+
+        // Create visible files and directories
+        File fileA = new File(root, "fileA.txt");
+        File fileB = new File(root, "fileB.txt");
+        File subDir = new File(root, "subDir");
+        assertTrue(subDir.mkdir(), "subDir should be created");
+        File subFile = new File(subDir, "subFile.txt");
+
+        // Create hidden files and directories
+        File hiddenFile = new File(root, ".hiddenFile.txt");
+        File hiddenDir = new File(root, ".hiddenDir");
+        assertTrue(hiddenDir.mkdir(), "hiddenDir should be created");
+        File hiddenSubFile = new File(hiddenDir, "hiddenSubFile.txt");
+
+        // Create all files
+        fileA.createNewFile();
+        fileB.createNewFile();
+        subFile.createNewFile();
+        hiddenFile.createNewFile();
+        hiddenSubFile.createNewFile();
+
+        // Show hidden = true, color enabled = true
+        TruffulaOptions options = new TruffulaOptions(root, true, true);
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(baos);
+
+        TruffulaPrinter printer = new TruffulaPrinter(options, printStream);
+        printer.printTree();
+
+        String nl = System.lineSeparator();
+        String WHITE = "\u001B[0;37m";
+        String PURPLE = "\033[0;35m";
+        String YELLOW = "\033[0;33m";
+        String RESET = "\u001B[0m";
+
+        StringBuilder expected = new StringBuilder();
+        expected.append(WHITE).append("rootFolder/").append(nl).append(RESET);
+        expected.append(PURPLE).append("   .hiddenDir/").append(nl).append(RESET);
+        expected.append(YELLOW).append("      hiddenSubFile.txt").append(nl).append(RESET);
+        expected.append(PURPLE).append("   .hiddenFile.txt").append(nl).append(RESET);
+        expected.append(PURPLE).append("   fileA.txt").append(nl).append(RESET);
+        expected.append(PURPLE).append("   fileB.txt").append(nl).append(RESET);
+        expected.append(PURPLE).append("   subDir/").append(nl).append(RESET);
+        expected.append(YELLOW).append("      subFile.txt").append(nl).append(RESET);
+
+        assertEquals(expected.toString(), baos.toString());
+    }//end withHiddenFiles
 
 }//end file
