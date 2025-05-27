@@ -118,14 +118,14 @@ public class TruffulaOptions  {
     else
     {
       //showHidden
-      if(args[0] == "-h" || args[1] == "-h")
+      if(args[0].equalsIgnoreCase( "-h") || args[1].equalsIgnoreCase( "-h"))
         showHidden = true;
       
       else  
         throw new IllegalArgumentException("illegal arguments");
       
       //no color
-      if(args[1] == "-nc" || args[0] == "-nc")
+      if(args[1].equalsIgnoreCase("-nc") || args[0].equalsIgnoreCase( "-nc"))
         useColor = false;
       
       else
