@@ -177,7 +177,7 @@ public class TruffulaPrinter {
 
       if (children != null) {
 
-        //File[] sortedChildren = sort(children);
+        File[] sortedChildren = sort(children);
 
         for (File child : children) {
           if(color == 2)
