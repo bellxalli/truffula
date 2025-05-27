@@ -145,18 +145,21 @@ public class TruffulaPrinter {
     }//end if
 
     //colors changed based on level using color var
-    if(color == 0)
-    {
-      out.setCurrentColor(ConsoleColor.WHITE);
-    }
-    if(color == 1)
-    {
-      out.setCurrentColor(ConsoleColor.PURPLE);
-    }
-    if(color == 2)
-    {
-      out.setCurrentColor(ConsoleColor.YELLOW);
-    }
+    // if(color == 0)
+    // {
+    //   out.setCurrentColor(ConsoleColor.WHITE);
+    //   out.println(indent + directorySlash);
+    // }
+    // if(color == 1)
+    // {
+    //   out.setCurrentColor(ConsoleColor.PURPLE);
+    //   out.println(indent + directorySlash);
+    // }
+    // if(color == 2)
+    // {
+    //   out.setCurrentColor(ConsoleColor.YELLOW);
+    //   out.println(indent + directorySlash);
+    // }
 
 
     if (options.isUseColor()) {
