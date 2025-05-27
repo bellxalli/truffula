@@ -177,16 +177,18 @@ public class TruffulaPrinter {
 
       if (children != null) {
 
-        //File[] sortedChildren = sort(children);
+        File[] sortedChildren = AlphabeticalFileSorter.sort(children);
+        if(color == 2)
+        {
+          color = 0;
+        }
+        else
+        {
+          color++;
+        }
 
-        for (File child : children) {
-          if(color == 2)
-          {
-            color = 0;
-            printTreeHelper(child, level + 1, color);
-          }
-          else
-            printTreeHelper(child, level + 1, color +1);
+        for (File child : sortedChildren) {
+          printTreeHelper(child, level + 1, color);
 
         }//end for
       }//end if
