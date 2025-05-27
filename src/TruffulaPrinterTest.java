@@ -151,98 +151,98 @@ public class TruffulaPrinterTest {
     }
 
 
-@Test
-public void testPrintTreeSimpleTest(@TempDir File tempDir) throws IOException {
-    // Creates root folder
-    File root = new File(tempDir, "rootFolder");
-    assertTrue(root.mkdir(), "rootFolder should be created");
+    @Test
+    public void testPrintTreeSimpleTest(@TempDir File tempDir) throws IOException {
+        // Creates root folder
+        File root = new File(tempDir, "rootFolder");
+        assertTrue(root.mkdir(), "rootFolder should be created");
 
-    // Creates files and directories under rootFolder
-    File fileA = new File(root, "fileA.txt");
-    File fileB = new File(root, "fileB.txt");
+        // Creates files and directories under rootFolder
+        File fileA = new File(root, "fileA.txt");
+        File fileB = new File(root, "fileB.txt");
 
-    File subDir = new File(root, "subDir");
-    assertTrue(subDir.mkdir(), "subDir should be created");
+        File subDir = new File(root, "subDir");
+        assertTrue(subDir.mkdir(), "subDir should be created");
 
-    File subFile = new File(subDir, "subFile.txt");
-    fileA.createNewFile();
-    fileB.createNewFile();
-    subFile.createNewFile();
+        File subFile = new File(subDir, "subFile.txt");
+        fileA.createNewFile();
+        fileB.createNewFile();
+        subFile.createNewFile();
 
-    // color enabled now
-    TruffulaOptions options = new TruffulaOptions(root, false, true); // <--- enable color
+        // color enabled now
+        TruffulaOptions options = new TruffulaOptions(root, false, true); // <--- enable color
 
-    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-    PrintStream printStream = new PrintStream(baos);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(baos);
 
-    TruffulaPrinter printer = new TruffulaPrinter(options, printStream);
-    printer.printTree();
+        TruffulaPrinter printer = new TruffulaPrinter(options, printStream);
+        printer.printTree();
 
-    String nl = System.lineSeparator();
-    String WHITE = "\u001B[0;37m";
-    String RESET = "\u001B[0m";
+        String nl = System.lineSeparator();
+        String WHITE = "\u001B[0;37m";
+        String RESET = "\u001B[0m";
 
-    StringBuilder expected = new StringBuilder();
-    expected.append(WHITE).append("rootFolder/").append(nl).append(RESET);
-    expected.append(WHITE).append("   fileA.txt").append(nl).append(RESET);
-    expected.append(WHITE).append("   fileB.txt").append(nl).append(RESET);
-    expected.append(WHITE).append("   subDir/").append(nl).append(RESET);
-    expected.append(WHITE).append("      subFile.txt").append(nl).append(RESET);
+        StringBuilder expected = new StringBuilder();
+        expected.append(WHITE).append("rootFolder/").append(nl).append(RESET);
+        expected.append(WHITE).append("   fileA.txt").append(nl).append(RESET);
+        expected.append(WHITE).append("   fileB.txt").append(nl).append(RESET);
+        expected.append(WHITE).append("   subDir/").append(nl).append(RESET);
+        expected.append(WHITE).append("      subFile.txt").append(nl).append(RESET);
 
-    assertEquals(expected.toString(), baos.toString());
-}//end simpleTest
+        assertEquals(expected.toString(), baos.toString());
+    }//end simpleTest
 
-@Test
-public void testPrintTreeWithHiddenFiles(@TempDir File tempDir) throws IOException {
-    // Create root folder
-    File root = new File(tempDir, "rootFolder");
-    assertTrue(root.mkdir(), "rootFolder should be created");
+    @Test
+    public void testPrintTreeWithHiddenFiles(@TempDir File tempDir) throws IOException {
+        // Create root folder
+        File root = new File(tempDir, "rootFolder");
+        assertTrue(root.mkdir(), "rootFolder should be created");
 
-    // Create visible files and directories
-    File fileA = new File(root, "fileA.txt");
-    File fileB = new File(root, "fileB.txt");
-    File subDir = new File(root, "subDir");
-    assertTrue(subDir.mkdir(), "subDir should be created");
-    File subFile = new File(subDir, "subFile.txt");
+        // Create visible files and directories
+        File fileA = new File(root, "fileA.txt");
+        File fileB = new File(root, "fileB.txt");
+        File subDir = new File(root, "subDir");
+        assertTrue(subDir.mkdir(), "subDir should be created");
+        File subFile = new File(subDir, "subFile.txt");
 
-    // Create hidden files and directories
-    File hiddenFile = new File(root, ".hiddenFile.txt");
-    File hiddenDir = new File(root, ".hiddenDir");
-    assertTrue(hiddenDir.mkdir(), "hiddenDir should be created");
-    File hiddenSubFile = new File(hiddenDir, "hiddenSubFile.txt");
+        // Create hidden files and directories
+        File hiddenFile = new File(root, ".hiddenFile.txt");
+        File hiddenDir = new File(root, ".hiddenDir");
+        assertTrue(hiddenDir.mkdir(), "hiddenDir should be created");
+        File hiddenSubFile = new File(hiddenDir, "hiddenSubFile.txt");
 
-    // Create all files
-    fileA.createNewFile();
-    fileB.createNewFile();
-    subFile.createNewFile();
-    hiddenFile.createNewFile();
-    hiddenSubFile.createNewFile();
+        // Create all files
+        fileA.createNewFile();
+        fileB.createNewFile();
+        subFile.createNewFile();
+        hiddenFile.createNewFile();
+        hiddenSubFile.createNewFile();
 
-    // Show hidden = true, color enabled = true
-    TruffulaOptions options = new TruffulaOptions(root, true, true);
+        // Show hidden = true, color enabled = true
+        TruffulaOptions options = new TruffulaOptions(root, true, true);
 
-    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-    PrintStream printStream = new PrintStream(baos);
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        PrintStream printStream = new PrintStream(baos);
 
-    TruffulaPrinter printer = new TruffulaPrinter(options, printStream);
-    printer.printTree();
+        TruffulaPrinter printer = new TruffulaPrinter(options, printStream);
+        printer.printTree();
 
-    String nl = System.lineSeparator();
-    String WHITE = "\u001B[0;37m";
-    String RESET = "\u001B[0m";
+        String nl = System.lineSeparator();
+        String WHITE = "\u001B[0;37m";
+        String RESET = "\u001B[0m";
 
-    StringBuilder expected = new StringBuilder();
-    expected.append(WHITE).append("rootFolder/").append(nl).append(RESET);
-    expected.append(WHITE).append("   .hiddenDir/").append(nl).append(RESET);
-    expected.append(WHITE).append("      hiddenSubFile.txt").append(nl).append(RESET);
-    expected.append(WHITE).append("   .hiddenFile.txt").append(nl).append(RESET);
-    expected.append(WHITE).append("   fileA.txt").append(nl).append(RESET);
-    expected.append(WHITE).append("   fileB.txt").append(nl).append(RESET);
-    expected.append(WHITE).append("   subDir/").append(nl).append(RESET);
-    expected.append(WHITE).append("      subFile.txt").append(nl).append(RESET);
+        StringBuilder expected = new StringBuilder();
+        expected.append(WHITE).append("rootFolder/").append(nl).append(RESET);
+        expected.append(WHITE).append("   .hiddenDir/").append(nl).append(RESET);
+        expected.append(WHITE).append("      hiddenSubFile.txt").append(nl).append(RESET);
+        expected.append(WHITE).append("   .hiddenFile.txt").append(nl).append(RESET);
+        expected.append(WHITE).append("   fileA.txt").append(nl).append(RESET);
+        expected.append(WHITE).append("   fileB.txt").append(nl).append(RESET);
+        expected.append(WHITE).append("   subDir/").append(nl).append(RESET);
+        expected.append(WHITE).append("      subFile.txt").append(nl).append(RESET);
 
-    assertEquals(expected.toString(), baos.toString());
-}//end withHiddenFiles
+        assertEquals(expected.toString(), baos.toString());
+    }//end withHiddenFiles
 
 
 }//end file
