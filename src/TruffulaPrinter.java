@@ -1,7 +1,5 @@
-import static AlphabeticalFileSorter.sort;
 import java.io.File;
 import java.io.PrintStream;
-import static java.util.Arrays.sort;
 import java.util.List;
 
 /**
@@ -148,31 +146,40 @@ public class TruffulaPrinter {
 
     }//end if
 
-    //colors changed based on level using color var
-    if(color == 0)
+    //colors changed based on level using color var if enabled
+    if(options.isUseColor())
+    {
+      if(color == 0)
+      {
+        out.setCurrentColor(ConsoleColor.WHITE);
+        out.println(indent + directorySlash);
+      }
+      if(color == 1)
+      {
+        out.setCurrentColor(ConsoleColor.PURPLE);
+        out.println(indent + directorySlash);
+      }
+      if(color == 2)
+      {
+        out.setCurrentColor(ConsoleColor.YELLOW);
+        out.println(indent + directorySlash);
+      }
+    }
+    else
     {
       out.setCurrentColor(ConsoleColor.WHITE);
       out.println(indent + directorySlash);
     }
-    if(color == 1)
-    {
-      out.setCurrentColor(ConsoleColor.PURPLE);
-      out.println(indent + directorySlash);
-    }
-    if(color == 2)
-    {
-      out.setCurrentColor(ConsoleColor.YELLOW);
-      out.println(indent + directorySlash);
-    }
+    
 
     if (file.isDirectory()) {
       File[] children = file.listFiles();
 
       if (children != null) {
 
-        File[] sortedChildren = sort(children);
+        //File[] sortedChildren = sort(children);
 
-        for (File child : sortedChildren) {
+        for (File child : children) {
           if(color == 2)
           {
             color = 0;
