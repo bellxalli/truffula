@@ -127,7 +127,9 @@ public class TruffulaPrinter {
   private void printTreeHelper(File file, int level, int color) {
 
     if (!options.isShowHidden() && file.isHidden()) {
+
       return;
+
     }//doesn't show hidden files
 
     String indent = "";
@@ -161,6 +163,7 @@ public class TruffulaPrinter {
     //   out.println(indent + directorySlash);
     // }
 
+    
 
     if (options.isUseColor()) {
       out.setCurrentColor(ConsoleColor.WHITE);
