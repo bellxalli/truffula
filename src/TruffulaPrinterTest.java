@@ -170,7 +170,7 @@ public class TruffulaPrinterTest {
         subFile.createNewFile();
 
         // color enabled now
-        TruffulaOptions options = new TruffulaOptions(root, false, true); // <--- enable color
+        TruffulaOptions options = new TruffulaOptions(root, false, false); // <--- enable color
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(baos);
@@ -219,7 +219,7 @@ public class TruffulaPrinterTest {
         hiddenSubFile.createNewFile();
 
         // Show hidden = true, color enabled = true
-        TruffulaOptions options = new TruffulaOptions(root, true, true);
+        TruffulaOptions options = new TruffulaOptions(root, true, false);
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         PrintStream printStream = new PrintStream(baos);
